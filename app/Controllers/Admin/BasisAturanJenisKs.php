@@ -24,10 +24,10 @@ class BasisAturanJenisKs extends BaseController
 
             $id_aturanjenis = $this->basisAturanJenisKs->getInsertId();
 
-            foreach ($this->request->getPost('id_pertanyaan') as $key => $value) {
+            foreach ($this->request->getPost('id_diagnosa') as $key => $value) {
                 $this->detailBasisAturanJenisKs->save([
                     'id_aturanjenis' => $id_aturanjenis,
-                    'id_pertanyaan'  => $value
+                    'id_diagnosa'  => $value
                 ]);
             }
 
@@ -39,7 +39,7 @@ class BasisAturanJenisKs extends BaseController
         $data = [
             'title' => 'Tambah Data',
             'jenisKs' => $this->jenisKs->where('id_jenis NOT IN(SELECT id_jenis FROM basis_aturan_jenis_kekerasan_seksual)')->findAll(),
-            'pertanyaan' => $this->pertanyaan->findAll()
+            'diagnosa' => $this->diagnosa->where('id_diagnosa NOT IN(SELECT id_diagnosa FROM detail_basis_aturan_jenis_kekerasan_seksual)')->findAll()
         ];
         return view('admin/basis-aturan-jenis-ks/tambah', $data);
     }
@@ -48,18 +48,18 @@ class BasisAturanJenisKs extends BaseController
     {
         $basisAturan = $this->basisAturanJenisKs->find($id);
        
-        $detailBasisAturan = $this->detailBasisAturanJenisKs->select('id_pertanyaan')->where('id_aturanjenis', $id)->findAll();
+        $detailBasisAturan = $this->detailBasisAturanJenisKs->select('id_diagnosa')->where('id_aturanjenis', $id)->findAll();
 
         $rows = [];
         foreach ($detailBasisAturan as $key => $value) {
-            $rows[] = $value->id_pertanyaan;
+            $rows[] = $value->id_diagnosa;
         }
 
         $data = [
-            'title' => 'Edit Data',
+            'title' => 'Detail Data',
             'basisAturanJks' => [$basisAturan, $rows],
             'jenisKs' => $this->jenisKs->findAll(),
-            'pertanyaan' => $this->pertanyaan->whereIn('id_pertanyaan', $rows)->findAll()
+            'diagnosa' => $this->diagnosa->whereIn('id_diagnosa', $rows)->findAll()
         ];
         
         return view('admin/basis-aturan-jenis-ks/detail', $data);
@@ -68,13 +68,14 @@ class BasisAturanJenisKs extends BaseController
     public function edit($id)
     {
         if($_POST){
-            // Proses update data
-            $this->detailBasisAturanJenisKs->where('id_aturanjenis', $id)->delete();
+            if($this->detailBasisAturanJenisKs->where('id_aturanjenis', $id)->countAll() > 0){
+                $this->detailBasisAturanJenisKs->where('id_aturanjenis', $id)->delete();
+            }
 
-            foreach ($this->request->getPost('id_pertanyaan') as $key => $value) {
+            foreach ($this->request->getPost('id_diagnosa') as $key => $value) {
                 $this->detailBasisAturanJenisKs->save([
                     'id_aturanjenis' => $id,
-                    'id_pertanyaan'  => $value
+                    'id_diagnosa'  => $value
                 ]);
             }
 
@@ -85,18 +86,21 @@ class BasisAturanJenisKs extends BaseController
 
         $basisAturan = $this->basisAturanJenisKs->find($id);
         
-        $detailBasisAturan = $this->detailBasisAturanJenisKs->select('id_pertanyaan')->where('id_aturanjenis', $id)->findAll();
+        $detailBasisAturan = $this->detailBasisAturanJenisKs->select('id_diagnosa')->where('id_aturanjenis', $id)->findAll();
+
+        $idDiagnosa = $this->detailBasisAturanJenisKs->select('id_diagnosa')->where("id_aturanjenis != $id")->findAll();
+        $idDiagnosa = array_values(array_column($idDiagnosa, 'id_diagnosa'));
 
         $rows = [];
         foreach ($detailBasisAturan as $key => $value) {
-            $rows[] = $value->id_pertanyaan;
+            $rows[] = $value->id_diagnosa;
         }
 
         $data = [
             'title' => 'Edit Data',
             'basisAturanJks' => [$basisAturan, $rows],
             'jenisKs' => $this->jenisKs->findAll(),
-            'pertanyaan' => $this->pertanyaan->findAll()
+            'diagnosa' => $this->diagnosa->whereNotIn('id_diagnosa', array_merge([0], $idDiagnosa))->findAll()
         ];
         
         return view('admin/basis-aturan-jenis-ks/edit', $data);

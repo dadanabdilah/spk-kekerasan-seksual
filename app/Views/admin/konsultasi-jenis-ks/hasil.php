@@ -43,7 +43,7 @@
                         <label for="nama">Pernyataan Diagnosa yang sesuai dengan kejadin yang dialami!</label>
                         <ul>
                             <?php foreach ($detailKonsultasi as $key => $value) { ?>
-                                <li><?= $value->nama_pertanyaan ?></li>
+                                <li><?= $value->nama_diagnosa ?></li>
                             <?php } ?>
                         </ul>
                     </div>
@@ -55,13 +55,59 @@
                                 <td>Jenis Kekerasan Seksusal</td>
                                 <td>Keterangan</td>
                             </tr>
-                            <?php foreach ($detailKonsultasi as $key => $value) { ?>
+                            <?php
+                                foreach ($detailKonsultasi as $key => $value) {
+                                    $jenis[] = $value->nmjenis . '|' . $value->keterangan;     
+                                }
+
+                                // Hitung persentase
+                                $persent = 100 / count($jenis);
+
+                                // cari persentase
+                                $data = [];
+                                foreach ($jenis as $key => $value) {
+                                    $data[$value . '|' . $key] = $persent; 
+                                }
+                                
+                                // Array baru untuk menyimpan hasil penjumlahan
+                                $array_hasil = array();
+                                
+                                // Loop melalui array awal
+                                foreach ($data as $key => $value) {
+                                    // Pisahkan kunci menjadi dua bagian
+                                    $pecah_kunci = explode("|", $key);
+                                    $kunci_utama = $pecah_kunci[0];
+                                    $keterangan = $pecah_kunci[1];
+                                    $kunci_tambahan = $pecah_kunci[2];
+                                
+                                    // Jika kunci utama sudah ada di array hasil, tambahkan nilai
+                                    if (array_key_exists($kunci_utama, $array_hasil)) {
+                                        $array_hasil[$kunci_utama] = [
+                                            'jenis' => $kunci_utama,
+                                            'keterangan' => $keterangan,
+                                            'persen' => $array_hasil[$kunci_utama]['persen'] + round($value, 2),
+                                        ];
+                                    } else {
+                                        // Jika tidak, buat entri baru di array hasil
+                                        // $array_hasil[$kunci_utama] = round($value, 2);
+                                        $array_hasil[$kunci_utama] = [
+                                            'jenis' => $kunci_utama,
+                                            'keterangan' => $keterangan,
+                                            'persen' => round($value, 2),
+                                        ];
+                                    }
+                                } 
+                            ?>
+                            <?php foreach ($array_hasil as $key => $value) { ?>
                                 <tr>
                                     <td>
-                                        <?= $value->nmjenis ?>
+                                        <?= $value['jenis'] ?>
                                     </td>
                                     <td>
-                                        <?= $value->keterangan ?>
+                                        <?= $value['keterangan'] ?>
+                                    </td>
+                                    <td>
+                                        <?= $value['persen'] ?>%
                                     </td>
                                 </tr>
                             <?php } ?>

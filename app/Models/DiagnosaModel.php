@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class PertanyaanModel extends Model
+class DiagnosaModel extends Model
 {
-    protected $table            = 'pertanyaan';
-    protected $primaryKey       = 'id_pertanyaan';
+    protected $table            = 'diagnosa';
+    protected $primaryKey       = 'id_diagnosa';
     protected $useAutoIncrement = true;
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_pertanyaan', 'nama_pertanyaan'];
+    protected $allowedFields    = ['id_diagnosa', 'nama_diagnosa'];
 
     protected bool $allowEmptyInserts = false;
 

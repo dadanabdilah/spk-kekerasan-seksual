@@ -18,8 +18,7 @@
 
     <title><?= $title ?? '' ?></title>
   </head>
-  <body>
-
+  <body class="bg-light">
     <div class="container-fluid h-100">
       <div class="row justify-content-center align-items-center h-100">
         <div class="col col-lg-4">
@@ -40,21 +39,22 @@
 
               <form action="<?= base_url('daftar') ?>" method="POST">
                 <div class="form-group">
-                    <input _ngcontent-c0="" class="form-control" placeholder="Nama Lengkap" type="text" name="nama_user">
+                    <input _ngcontent-c0="" class="form-control" placeholder="Nama Lengkap" type="text" name="nama_user" required>
                 </div>
                 <div class="form-group">
-                    <input _ngcontent-c0="" class="form-control" placeholder="Email" type="text" name="email">
+                    <input _ngcontent-c0="" class="form-control" placeholder="Email" type="text" name="email" required>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" placeholder="Password" type="password" name="password">
+                    <input class="form-control" placeholder="Password" type="password" name="password" required>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block">Daftar</button>
+                    <a href="<?= base_url() ?>" class="btn btn-outline-primary btn-block">Login</a>
                 </div>
               </form>
             </div>
             <div class="card-footer bg-white">
-                <a href="<?= base_url() ?>">Login</a></p>
+                <!-- <a href="<?= base_url() ?>">Login</a></p> -->
             </div>
           </div>
         </div>

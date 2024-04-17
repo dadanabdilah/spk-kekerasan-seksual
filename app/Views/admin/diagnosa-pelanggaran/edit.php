@@ -15,13 +15,13 @@
 
         <div class="card">
             <div class="card-header">
-                <a href="<?= base_url('admin/pertanyaan') ?>" class="btn btn-primary btn-sm">Kembali</a>
+                <a href="<?= base_url('admin/diagnosa-pelanggaran') ?>" class="btn btn-primary btn-sm">Kembali</a>
             </div>
             <div class="card-body">
-                <form method="POST" action=""<?= base_url('admin/pertanyaan/edit/' . $pertanyaanKs->id_pertanyaan) ?>>
+                <form method="POST" action=""<?= base_url('admin/diagnosa-pelannggaran/edit/' . $diagnosaPelanggaran->id_pelanggaran) ?>>
                     <div class="form-group">
-                        <label for="nama">Pertanyaan</label>
-                        <input type="text" class="form-control" id="nama_pertanyaan" name="nama_pertanyaan" value="<?= $pertanyaanKs->nama_pertanyaan ?>">
+                        <label for="nama">Pernyataan Pelanggaran</label>
+                        <input type="text" class="form-control" id="nama_pelanggaran" name="nama_pelanggaran" value="<?= $diagnosaPelanggaran->nama_pelanggaran ?>">
                     </div>
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </form>

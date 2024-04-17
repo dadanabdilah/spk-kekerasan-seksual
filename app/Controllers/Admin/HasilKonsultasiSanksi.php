@@ -14,7 +14,7 @@ class HasilKonsultasiSanksi extends BaseController
         }
         
         $data = [
-            'title' => 'Hasil Konsultasi Kekerasan Seksusal',
+            'title' => 'Hasil Konsultasi Sanksi Administratif',
             'konsultasiSanksiAdministratif' => $konsultasi,
         ];
         return view('admin/hasil-konsultasi-sanksi/index', $data);

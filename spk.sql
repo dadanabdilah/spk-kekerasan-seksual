@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 17, 2024 at 06:26 AM
+-- Generation Time: Apr 17, 2024 at 04:31 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -52,7 +52,7 @@ CREATE TABLE `basis_aturan_sanksi` (
 CREATE TABLE `detail_basis_aturan_jenis_kekerasan_seksual` (
   `id` int NOT NULL,
   `id_aturanjenis` int NOT NULL,
-  `id_pertanyaan` int NOT NULL
+  `id_diagnosa` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -76,7 +76,7 @@ CREATE TABLE `detail_basis_aturan_sanksi` (
 CREATE TABLE `detail_konsultasi_jenis_ks` (
   `id` int NOT NULL,
   `id_konsul_jenis` int NOT NULL,
-  `id_pertanyaan` int NOT NULL
+  `id_diagnosa` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -89,6 +89,17 @@ CREATE TABLE `detail_konsultasi_sanksi_administratif` (
   `id` int NOT NULL,
   `id_konsul_sanksi` int NOT NULL,
   `id_pelanggaran` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `diagnosa`
+--
+
+CREATE TABLE `diagnosa` (
+  `id_diagnosa` int NOT NULL,
+  `nama_diagnosa` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -147,17 +158,6 @@ CREATE TABLE `konsultasi_sanksi_administratif` (
 CREATE TABLE `pelanggaran` (
   `id_pelanggaran` int NOT NULL,
   `nama_pelanggaran` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pertanyaan`
---
-
-CREATE TABLE `pertanyaan` (
-  `id_pertanyaan` int NOT NULL,
-  `nama_pertanyaan` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -238,6 +238,12 @@ ALTER TABLE `detail_konsultasi_sanksi_administratif`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `diagnosa`
+--
+ALTER TABLE `diagnosa`
+  ADD PRIMARY KEY (`id_diagnosa`) USING BTREE;
+
+--
 -- Indexes for table `jenis_kekerasan_seksual`
 --
 ALTER TABLE `jenis_kekerasan_seksual`
@@ -262,12 +268,6 @@ ALTER TABLE `pelanggaran`
   ADD PRIMARY KEY (`id_pelanggaran`) USING BTREE;
 
 --
--- Indexes for table `pertanyaan`
---
-ALTER TABLE `pertanyaan`
-  ADD PRIMARY KEY (`id_pertanyaan`) USING BTREE;
-
---
 -- Indexes for table `sanksi_administratif`
 --
 ALTER TABLE `sanksi_administratif`
@@ -287,7 +287,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `basis_aturan_jenis_kekerasan_seksual`
 --
 ALTER TABLE `basis_aturan_jenis_kekerasan_seksual`
-  MODIFY `id_aturanjenis` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_aturanjenis` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `basis_aturan_sanksi`
@@ -311,13 +311,19 @@ ALTER TABLE `detail_basis_aturan_sanksi`
 -- AUTO_INCREMENT for table `detail_konsultasi_jenis_ks`
 --
 ALTER TABLE `detail_konsultasi_jenis_ks`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `detail_konsultasi_sanksi_administratif`
 --
 ALTER TABLE `detail_konsultasi_sanksi_administratif`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `diagnosa`
+--
+ALTER TABLE `diagnosa`
+  MODIFY `id_diagnosa` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `jenis_kekerasan_seksual`
@@ -329,7 +335,7 @@ ALTER TABLE `jenis_kekerasan_seksual`
 -- AUTO_INCREMENT for table `konsultasi_jenis_ks`
 --
 ALTER TABLE `konsultasi_jenis_ks`
-  MODIFY `id_konsul_jenis` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_konsul_jenis` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `konsultasi_sanksi_administratif`
@@ -344,12 +350,6 @@ ALTER TABLE `pelanggaran`
   MODIFY `id_pelanggaran` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `pertanyaan`
---
-ALTER TABLE `pertanyaan`
-  MODIFY `id_pertanyaan` int NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `sanksi_administratif`
 --
 ALTER TABLE `sanksi_administratif`
@@ -359,7 +359,7 @@ ALTER TABLE `sanksi_administratif`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

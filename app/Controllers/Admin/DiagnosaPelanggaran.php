@@ -3,15 +3,15 @@
 namespace App\Controllers\Admin;
 use App\Controllers\BaseController;
 
-class PertanyaanPelanggaran extends BaseController
+class DiagnosaPelanggaran extends BaseController
 {
     public function index(): string
     {
         $data = [
-            'title' => 'Pertanyaan Pelanggaran',
-            'pertanyaanPelanggaran' => $this->pelanggaran->findAll()
+            'title' => 'Diagnosa Pelanggaran',
+            'diagnosaPelanggaran' => $this->pelanggaran->findAll()
         ];
-        return view('admin/pertanyaan-pelanggaran/index', $data);
+        return view('admin/diagnosa-pelanggaran/index', $data);
     }
 
     public function tambah()
@@ -24,13 +24,13 @@ class PertanyaanPelanggaran extends BaseController
 
             session()->setFlashdata('status', 'success');
             session()->setFlashdata('pesan', 'Data berhasil disimpan');
-            return redirect()->to('/admin/pertanyaan-pelanggaran');
+            return redirect()->to('/admin/diagnosa-pelanggaran');
         }
 
         $data = [
             'title' => 'Tambah Data'
         ];
-        return view('admin/pertanyaan-pelanggaran/tambah', $data);
+        return view('admin/diagnosa-pelanggaran/tambah', $data);
     }
 
     public function edit($id)
@@ -46,15 +46,15 @@ class PertanyaanPelanggaran extends BaseController
 
             session()->setFlashdata('status', 'success');
             session()->setFlashdata('pesan', 'Data berhasil diupdate');
-            return redirect()->to('/admin/pertanyaan-pelanggaran');
+            return redirect()->to('/admin/diagnosa-pelanggaran');
         }
 
         $data = [
             'title' => 'Edit Data',
-            'pertanyaanPelanggaran' => $this->pelanggaran->find($id)
+            'diagnosaPelanggaran' => $this->pelanggaran->find($id)
         ];
         
-        return view('admin/pertanyaan-pelanggaran/edit', $data);
+        return view('admin/diagnosa-pelanggaran/edit', $data);
     }
 
     public function hapus($id)
@@ -64,6 +64,6 @@ class PertanyaanPelanggaran extends BaseController
 
         session()->setFlashdata('status', 'success');
         session()->setFlashdata('pesan', 'Data berhasil dihapus');
-        return redirect()->to('/admin/pertanyaan-pelanggaran');
+        return redirect()->to('/admin/diagnosa-pelanggaran');
     }
 }

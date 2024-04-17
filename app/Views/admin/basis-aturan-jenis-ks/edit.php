@@ -31,15 +31,15 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <lable>Pertanyaan Diagnosa</lable>
+                        <lable>Pernyataan Diagnosa</lable>
                         <table class="table table-bordered">
-                            <?php foreach ($pertanyaan as $key => $value) { ?>
+                            <?php foreach ($diagnosa as $key => $value) { ?>
                                 <tr>
                                     <td>
-                                        <input type="checkbox" name="id_pertanyaan[]" value="<?= $value->id_pertanyaan ?>" <?= in_array($value->id_pertanyaan, $basisAturanJks[1]) ? 'checked' : '' ?> >
+                                        <input type="checkbox" name="id_diagnosa[]" value="<?= $value->id_diagnosa ?>" <?= in_array($value->id_diagnosa, $basisAturanJks[1]) ? 'checked' : '' ?> >
                                     </td>
                                     <td>
-                                        <span><?= $value->nama_pertanyaan ?></span>
+                                        <span><?= $value->nama_diagnosa ?></span>
                                     </td>
                                 </tr>
                             <?php } ?>

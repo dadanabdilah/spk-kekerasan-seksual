@@ -39,7 +39,7 @@ class BasisAturanSanksi extends BaseController
         $data = [
             'title' => 'Tambah Data',
             'sanksiAdministratif' => $this->sanksiAdm->where('id_sanksi NOT IN(SELECT id_sanksi FROM basis_aturan_sanksi)')->findAll(),
-            'pelanggaran' => $this->pelanggaran->findAll()
+            'pelanggaran' => $this->pelanggaran->where('id_pelanggaran NOT IN(SELECT id_pelanggaran FROM detail_basis_aturan_sanksi)')->findAll()
         ];
         return view('admin/basis-aturan-sanksi/tambah', $data);
     }
@@ -87,6 +87,9 @@ class BasisAturanSanksi extends BaseController
        
         $detailBasisAturan = $this->detailBasisAturanSanksi->select('id_pelanggaran')->where('id_aturansanksi', $id)->findAll();
 
+        $idPelanggaran = $this->detailBasisAturanSanksi->select('id_pelanggaran')->where("id_aturansanksi != $id")->findAll();
+        $idPelanggaran = array_values(array_column($idPelanggaran, 'id_pelanggaran'));
+
         $rows = [];
         foreach ($detailBasisAturan as $key => $value) {
             $rows[] = $value->id_pelanggaran;
@@ -96,7 +99,7 @@ class BasisAturanSanksi extends BaseController
             'title' => 'Edit Data',
             'basisAturanSanksi' => [$basisAturan, $rows],
             'sanksiAdm' => $this->sanksiAdm->findAll(),
-            'pelanggaran' => $this->pelanggaran->findAll()
+            'pelanggaran' => $this->pelanggaran->whereNotIn('id_pelanggaran', array_merge([0], $idPelanggaran))->findAll()
         ];
         
         return view('admin/basis-aturan-sanksi/edit', $data);
@@ -106,10 +109,8 @@ class BasisAturanSanksi extends BaseController
     {
         if($this->detailBasisAturanSanksi->where('id_aturansanksi', $id)->countAll() > 0){
             $this->detailBasisAturanSanksi->where('id_aturansanksi', $id)->delete();
-            session()->setFlashdata('status', 'danger');
-            session()->setFlashdata('pesan', 'Data tidak bisa dihapus');
-            return redirect()->to('/admin/basis-aturan-sanksi');
         }
+
         // Proses hapus data
         $this->basisAturanSanksi->delete($id);
 

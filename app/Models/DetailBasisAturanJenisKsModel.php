@@ -12,7 +12,7 @@ class DetailBasisAturanJenisKsModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_aturanjenis', 'id_pertanyaan'];
+    protected $allowedFields    = ['id_aturanjenis', 'id_diagnosa'];
 
     protected bool $allowEmptyInserts = false;
 

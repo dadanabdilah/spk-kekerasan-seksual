@@ -12,7 +12,7 @@ class DetailKonsultasiJenisKsModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_konsul_jenis', 'id_pertanyaan'];
+    protected $allowedFields    = ['id_konsul_jenis', 'id_diagnosa'];
 
     protected bool $allowEmptyInserts = false;
 
@@ -40,14 +40,14 @@ class DetailKonsultasiJenisKsModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function withPertanyaan()
+    public function withDiagnosa()
     {
-        return $this->join('pertanyaan', 'detail_konsultasi_jenis_ks.id_pertanyaan = pertanyaan.id_pertanyaan');
+        return $this->join('diagnosa', 'detail_konsultasi_jenis_ks.id_diagnosa = diagnosa.id_diagnosa');
     }
 
     public function withDetailBasisAturanJenisKs()
     {
-        return $this->join('detail_basis_aturan_jenis_kekerasan_seksual', 'detail_basis_aturan_jenis_kekerasan_seksual.id_pertanyaan = pertanyaan.id_pertanyaan');
+        return $this->join('detail_basis_aturan_jenis_kekerasan_seksual', 'detail_basis_aturan_jenis_kekerasan_seksual.id_diagnosa = diagnosa.id_diagnosa');
     }
 
     public function withBasisAturanJenisKs()

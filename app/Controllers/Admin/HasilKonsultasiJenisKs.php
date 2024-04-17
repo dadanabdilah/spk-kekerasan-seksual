@@ -24,7 +24,7 @@ class HasilKonsultasiJenisKs extends BaseController
     {
         $konsultasi = $this->konsultasiJenisKs->find($id);
        
-        $detailKonsutasi = $this->detailKonsultasiJenisKs->withPertanyaan()->withDetailBasisAturanJenisKs()->withBasisAturanJenisKs()->withJenisKs()->where('id_konsul_jenis', $id)->findAll();
+        $detailKonsutasi = $this->detailKonsultasiJenisKs->withDiagnosa()->withDetailBasisAturanJenisKs()->withBasisAturanJenisKs()->withJenisKs()->where('id_konsul_jenis', $id)->findAll();
 
         $data = [
             'title' => 'Detail Konsultasi',

@@ -20,19 +20,19 @@
                 <form method="POST" action="<?= base_url('admin/konsultasi-sanksi/tambah') ?>">
                     <div class="form-group">
                         <label for="nama">Nama Pelapor</label>
-                        <input class="form-control" type="text" name="nmpelapor" />
+                        <input class="form-control" type="text" name="nmpelapor" required/>
                     </div>
                     <div class="form-group">
                         <label for="nama">Nomor Telepon</label>
-                        <input class="form-control" type="number" name="tlp" />
+                        <input class="form-control" type="number" name="tlp" required/>
                     </div>
                     <div class="form-group">
                         <label for="nama">Alamat</label>
-                        <textarea class="form-control" type="text" name="alamat"></textarea>
+                        <textarea class="form-control" type="text" name="alamat" required></textarea>
                     </div>
                     <div class="form-group">
                         <label for="nama">Status</label>
-                        <select class="form-control" name="status">
+                        <select class="form-control" name="status" required>
                             <option value="mahasiswa">Mahasiswa</option>
                             <option value="pendidik">Pendidik</option>
                             <option value="tenaga_pendidik">Tenaga Kependidikan</option>

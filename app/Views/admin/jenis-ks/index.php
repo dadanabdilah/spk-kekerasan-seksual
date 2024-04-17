@@ -38,8 +38,8 @@
                                     <td><?= $data->keterangan ?></td>
                                     <td><?= $data->solusi ?></td>
                                     <td>
-                                        <a href="<?= base_url('admin/jenis-ks/edit/' . $data->id_jenis) ?>" class="btn btn-warning">Edit</a>
-                                        <a href="<?= base_url('admin/jenis-ks/hapus/' . $data->id_jenis) ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                                        <a href="<?= base_url('admin/jenis-ks/edit/' . $data->id_jenis) ?>" class="btn btn-sm btn-warning">Edit</a>
+                                        <a href="<?= base_url('admin/jenis-ks/hapus/' . $data->id_jenis) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

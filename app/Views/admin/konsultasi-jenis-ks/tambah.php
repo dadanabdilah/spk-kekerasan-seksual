@@ -20,19 +20,19 @@
                 <form method="POST" action="<?= base_url('admin/konsultasi-jenis-ks/tambah') ?>">
                     <div class="form-group">
                         <label for="nama">Nama Pelapor</label>
-                        <input class="form-control" type="text" name="nmpelapor" />
+                        <input class="form-control" type="text" name="nmpelapor" required/>
                     </div>
                     <div class="form-group">
                         <label for="nama">Nomor Telepon</label>
-                        <input class="form-control" type="number" name="tlp" />
+                        <input class="form-control" type="number" name="tlp" required/>
                     </div>
                     <div class="form-group">
                         <label for="nama">Alamat</label>
-                        <textarea class="form-control" type="text" name="alamat"></textarea>
+                        <textarea class="form-control" type="text" name="alamat" required></textarea>
                     </div>
                     <div class="form-group">
                         <label for="nama">Disabilitas</label>
-                        <select class="form-control" name="kondisi">
+                        <select class="form-control" name="kondisi" required>
                             <option value="disabilitas">Ya</option>
                             <option value="bukan_disabilitas">Tidak</option>
                         </select>
@@ -40,13 +40,13 @@
                     <div class="form-group">
                         <lable>Pilih pernyataan diagnosa sesuai dengan yang pernah anda alami!</lable>
                         <table class="table table-bordered">
-                            <?php foreach ($pertanyaan as $key => $value) { ?>
+                            <?php foreach ($diagnosa as $key => $value) { ?>
                                 <tr>
                                     <td>
-                                        <input type="checkbox" name="id_pertanyaan[]" value="<?= $value->id_pertanyaan ?>">
+                                        <input type="checkbox" name="id_diagnosa[]" value="<?= $value->id_diagnosa ?>">
                                     </td>
                                     <td>
-                                        <span><?= $value->nama_pertanyaan ?></span>
+                                        <span><?= $value->nama_diagnosa ?></span>
                                     </td>
                                 </tr>
                             <?php } ?>

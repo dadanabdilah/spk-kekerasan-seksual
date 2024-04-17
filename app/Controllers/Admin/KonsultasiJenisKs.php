@@ -21,10 +21,10 @@ class KonsultasiJenisKs extends BaseController
 
             $id_konsul_jenis = $this->konsultasiJenisKs->getInsertId();
 
-            foreach ($this->request->getPost('id_pertanyaan') as $key => $value) {
+            foreach ($this->request->getPost('id_diagnosa') as $key => $value) {
                 $this->detailKonsultasiJenisKs->save([
                     'id_konsul_jenis' => $id_konsul_jenis,
-                    'id_pertanyaan'  => $value
+                    'id_diagnosa'  => $value
                 ]);
             }
 
@@ -35,7 +35,7 @@ class KonsultasiJenisKs extends BaseController
 
         $data = [
             'title' => 'Konsultasi',
-            'pertanyaan' => $this->pertanyaan->findAll()
+            'diagnosa' => $this->diagnosa->findAll()
         ];
         return view('admin/konsultasi-jenis-ks/tambah', $data);
     }
@@ -44,7 +44,7 @@ class KonsultasiJenisKs extends BaseController
     {
         $konsultasi = $this->konsultasiJenisKs->find($id);
        
-        $detailKonsutasi = $this->detailKonsultasiJenisKs->withPertanyaan()->withDetailBasisAturanJenisKs()->withBasisAturanJenisKs()->withJenisKs()->where('id_konsul_jenis', $id)->findAll();
+        $detailKonsutasi = $this->detailKonsultasiJenisKs->withDiagnosa()->withDetailBasisAturanJenisKs()->withBasisAturanJenisKs()->withJenisKs()->where('id_konsul_jenis', $id)->findAll();
 
         $data = [
             'title' => 'Hasil Konsultasi',
