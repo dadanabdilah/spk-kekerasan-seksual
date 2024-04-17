@@ -6,15 +6,15 @@ Aplikasi ini akan membantu menentukan jenis seksual yang dialamai dan juga menen
 
 ## Akun
 
-== Satgas ==
--> satgas@gmail.com
--> 12345
-== Pelapor ==
--> pelpor@gmail.com
--> 12345
-== Pimpinan Perguruan Tinggi ==
--> pimpinan@gmail.com
--> 12345
+Satgas
+- satgas@gmail.com
+- 12345
+Pelapor
+- pelpor@gmail.com
+- 12345
+Pimpinan Perguruan Tinggi
+- pimpinan@gmail.com
+- 12345
 
 ## Server Requirements
 
