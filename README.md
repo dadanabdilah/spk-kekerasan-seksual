@@ -4,7 +4,7 @@
 
 Aplikasi ini akan membantu menentukan jenis seksual yang dialamai dan juga menentukan jenis sanksi kekerasan seksual yang dilakukan seseorang.
 
-## Akun
+## Akun Demo
 
 Satgas
 - satgas@gmail.com
@@ -18,7 +18,7 @@ Pimpinan Perguruan Tinggi
 - pimpinan@gmail.com
 - 12345
 
-## Server Requirements
+## Kebutuhan Server
 
 Menggunakan PHP versi 7.4 pastkan extensi berikut diinstall dan aktif :
 
