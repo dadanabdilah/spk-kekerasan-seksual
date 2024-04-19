@@ -34,9 +34,9 @@
                                     <td><?= $no++ ?></td>
                                     <td><?= $data->nmsanksi ?></td>
                                     <td>
-                                        <a href="<?= base_url('admin/basis-aturan-sanksi/detail/' . $data->id_aturansanksi) ?>" class="btn btn-sm btn-info">Detail</a>
-                                        <a href="<?= base_url('admin/basis-aturan-sanksi/edit/' . $data->id_aturansanksi) ?>" class="btn btn-sm btn-warning">Edit</a>
-                                        <a href="<?= base_url('admin/basis-aturan-sanksi/hapus/' . $data->id_aturansanksi) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                                        <a href="<?= base_url('admin/basis-aturan-sanksi/detail/' . $data->id_aturansanksi) ?>" class="btn btn-sm btn-info"><i class="fa fa-list"></i></a>
+                                        <a href="<?= base_url('admin/basis-aturan-sanksi/edit/' . $data->id_aturansanksi) ?>" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
+                                        <a href="<?= base_url('admin/basis-aturan-sanksi/hapus/' . $data->id_aturansanksi) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

@@ -37,8 +37,8 @@
                                     <td><?= $data->tlp ?></td>
                                     <td><?= $data->tgl ?></td>
                                     <td>
-                                        <a href="<?= base_url('admin/hasil-konsultasi-sanksi/detail/' . $data->id_konsul_sanksi) ?>" class="btn btn-sm btn-info">Detail</a>
-                                        <a href="<?= base_url('admin/hasil-konsultasi-sanksi/hapus/' . $data->id_konsul_sanksi) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                                        <a href="<?= base_url('admin/hasil-konsultasi-sanksi/detail/' . $data->id_konsul_sanksi) ?>" class="btn btn-sm btn-info"><i class="fa fa-list"></i></a>
+                                        <a href="<?= base_url('admin/hasil-konsultasi-sanksi/hapus/' . $data->id_konsul_sanksi) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

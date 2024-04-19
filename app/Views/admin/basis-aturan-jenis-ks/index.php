@@ -36,9 +36,9 @@
                                     <td><?= $data->nmjenis ?></td>
                                     <td><?= $data->keterangan ?></td>
                                     <td>
-                                        <a href="<?= base_url('admin/basis-aturan-jenis-ks/detail/' . $data->id_aturanjenis) ?>" class="btn btn-sm btn-info">Detail</a>
-                                        <a href="<?= base_url('admin/basis-aturan-jenis-ks/edit/' . $data->id_aturanjenis) ?>" class="btn btn-sm btn-warning">Edit</a>
-                                        <a href="<?= base_url('admin/basis-aturan-jenis-ks/hapus/' . $data->id_aturanjenis) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                                        <a href="<?= base_url('admin/basis-aturan-jenis-ks/detail/' . $data->id_aturanjenis) ?>" class="btn btn-sm btn-info"><i class="fa fa-list"></i></a>
+                                        <a href="<?= base_url('admin/basis-aturan-jenis-ks/edit/' . $data->id_aturanjenis) ?>" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
+                                        <a href="<?= base_url('admin/basis-aturan-jenis-ks/hapus/' . $data->id_aturanjenis) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

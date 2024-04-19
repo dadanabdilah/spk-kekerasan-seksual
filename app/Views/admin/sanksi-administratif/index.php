@@ -36,8 +36,8 @@
                                     <td><?= $data->nmsanksi ?></td>
                                     <td><?= $data->keterangan ?></td>
                                     <td>
-                                        <a href="<?= base_url('admin/sanksi-administratif/edit/' . $data->id_sanksi) ?>" class="btn btn-sm btn-warning">Edit</a>
-                                        <a href="<?= base_url('admin/sanksi-administratif/hapus/' . $data->id_sanksi) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                                        <a href="<?= base_url('admin/sanksi-administratif/edit/' . $data->id_sanksi) ?>" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
+                                        <a href="<?= base_url('admin/sanksi-administratif/hapus/' . $data->id_sanksi) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
