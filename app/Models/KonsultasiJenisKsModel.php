@@ -12,7 +12,7 @@ class KonsultasiJenisKsModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_konsul_jenis', 'nmpelapor', 'tlp', 'tgl', 'alamat', 'kondisi', 'status', 'id_user'];
+    protected $allowedFields    = ['id_konsul_jenis', 'nmpelapor', 'tlp', 'tgl', 'alamat', 'kondisi', 'status', 'nama_pelaku', 'id_user'];
 
     protected bool $allowEmptyInserts = false;
 

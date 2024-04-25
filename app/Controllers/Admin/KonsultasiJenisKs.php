@@ -9,9 +9,11 @@ class KonsultasiJenisKs extends BaseController
     public function index()
     {
         if($_POST){
+            dd($_POST);
             // Proses simpan data
             $this->konsultasiJenisKs->save([
                 'nmpelapor' => $this->request->getPost('nmpelapor'),
+                'nama_pelaku' => $this->request->getPost('nama_pelaku'),
                 'tlp' => $this->request->getPost('tlp'),
                 'alamat' => $this->request->getPost('alamat'),
                 'kondisi' => $this->request->getPost('kondisi'),
@@ -33,9 +35,15 @@ class KonsultasiJenisKs extends BaseController
             return redirect()->to('/admin/konsultasi-jenis-ks/hasil/' . $id_konsul_jenis);
         }
 
+        $diagnosa = [];
+        $no = 1;
+        foreach ($this->diagnosa->findAll() as $key => $value) {
+            $diagnosa[$key] = (object) ['id_diagnosa' => $value->id_diagnosa, 'nama_diagnosa' => $value->nama_diagnosa, 'no' => $no++];
+        }
+
         $data = [
             'title' => 'Konsultasi',
-            'diagnosa' => $this->diagnosa->findAll()
+            'diagnosa' => $diagnosa,
         ];
         return view('admin/konsultasi-jenis-ks/tambah', $data);
     }
