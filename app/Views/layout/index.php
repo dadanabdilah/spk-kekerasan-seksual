@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="<?= base_url('assets/') ?>css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="<?= base_url('assets/') ?>css/bootstrap.min.css" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title><?= $title ?? '' ?></title>
   </head>
@@ -88,8 +88,8 @@
       <?= $this->renderSection('content') ?>
     </div>
 
-    <script src="<?= base_url('assets/') ?>js/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="<?= base_url('assets/') ?>js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    <script src="<?= base_url('assets/') ?>js/jquery.slim.min.js" ></script>
+    <script src="<?= base_url('assets/') ?>js/bootstrap.bundle.min.js" ></script>
     <?= $this->renderSection('js') ?>
   </body>
 </html>

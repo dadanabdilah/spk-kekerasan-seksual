@@ -9,7 +9,6 @@ class KonsultasiJenisKs extends BaseController
     public function index()
     {
         if($_POST){
-            dd($_POST);
             // Proses simpan data
             $this->konsultasiJenisKs->save([
                 'nmpelapor' => $this->request->getPost('nmpelapor'),

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 25, 2024 at 07:25 AM
+-- Generation Time: Apr 29, 2024 at 02:47 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `basis_aturan_jenis_kekerasan_seksual` (
   `id_aturanjenis` int NOT NULL,
   `id_jenis` int NOT NULL
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `basis_aturan_jenis_kekerasan_seksual`
@@ -48,7 +48,7 @@ INSERT INTO `basis_aturan_jenis_kekerasan_seksual` (`id_aturanjenis`, `id_jenis`
 CREATE TABLE `basis_aturan_sanksi` (
   `id_aturansanksi` int NOT NULL,
   `id_sanksi` int NOT NULL
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -60,7 +60,7 @@ CREATE TABLE `detail_basis_aturan_jenis_kekerasan_seksual` (
   `id` int NOT NULL,
   `id_aturanjenis` int NOT NULL,
   `id_diagnosa` int NOT NULL
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `detail_basis_aturan_jenis_kekerasan_seksual`
@@ -80,7 +80,7 @@ CREATE TABLE `detail_basis_aturan_sanksi` (
   `id` int NOT NULL,
   `id_aturansanksi` int NOT NULL,
   `id_pelanggaran` int NOT NULL
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -92,14 +92,16 @@ CREATE TABLE `detail_konsultasi_jenis_ks` (
   `id` int NOT NULL,
   `id_konsul_jenis` int NOT NULL,
   `id_diagnosa` int NOT NULL
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `detail_konsultasi_jenis_ks`
 --
 
 INSERT INTO `detail_konsultasi_jenis_ks` (`id`, `id_konsul_jenis`, `id_diagnosa`) VALUES
-(1, 1, 1);
+(1, 1, 1),
+(2, 2, 1),
+(3, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -111,7 +113,7 @@ CREATE TABLE `detail_konsultasi_sanksi_administratif` (
   `id` int NOT NULL,
   `id_konsul_sanksi` int NOT NULL,
   `id_pelanggaran` int NOT NULL
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -122,7 +124,7 @@ CREATE TABLE `detail_konsultasi_sanksi_administratif` (
 CREATE TABLE `diagnosa` (
   `id_diagnosa` int NOT NULL,
   `nama_diagnosa` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `diagnosa`
@@ -143,14 +145,14 @@ CREATE TABLE `jenis_kekerasan_seksual` (
   `nmjenis` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `keterangan` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `solusi` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `jenis_kekerasan_seksual`
 --
 
 INSERT INTO `jenis_kekerasan_seksual` (`id_jenis`, `nmjenis`, `keterangan`, `solusi`) VALUES
-(1, 'Verbal', '', '');
+(1, 'Verbal', '-', '');
 
 -- --------------------------------------------------------
 
@@ -162,19 +164,21 @@ CREATE TABLE `konsultasi_jenis_ks` (
   `id_konsul_jenis` int NOT NULL,
   `tgl` date NOT NULL,
   `nmpelapor` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `nama_pelaku` int NOT NULL,
   `tlp` char(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `alamat` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `kondisi` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `status` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
+  `status` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `id_user` int NOT NULL
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `konsultasi_jenis_ks`
 --
 
-INSERT INTO `konsultasi_jenis_ks` (`id_konsul_jenis`, `tgl`, `nmpelapor`, `tlp`, `alamat`, `kondisi`, `status`, `id_user`) VALUES
-(1, '2024-04-19', 'Testing', '09876546789', 'Kuningan', 'disabilitas', '', 2);
+INSERT INTO `konsultasi_jenis_ks` (`id_konsul_jenis`, `tgl`, `nmpelapor`, `nama_pelaku`, `tlp`, `alamat`, `kondisi`, `status`, `id_user`) VALUES
+(1, '2024-04-19', 'Testing', 0, '09876546789', 'Kuningan', 'disabilitas', '', 2),
+(2, '2024-04-29', 'Dadan Abdilah', 0, '89765567890', 'Kuningan', 'disabilitas', '', 2);
 
 -- --------------------------------------------------------
 
@@ -191,7 +195,7 @@ CREATE TABLE `konsultasi_sanksi_administratif` (
   `kondisi` int NOT NULL,
   `status` enum('mahasiswa','pendidik','tenaga_pendidik','warga_kampus','masyarakat_umum') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `id_user` int NOT NULL
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -202,7 +206,7 @@ CREATE TABLE `konsultasi_sanksi_administratif` (
 CREATE TABLE `pelanggaran` (
   `id_pelanggaran` int NOT NULL,
   `nama_pelanggaran` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -213,8 +217,8 @@ CREATE TABLE `pelanggaran` (
 CREATE TABLE `sanksi_administratif` (
   `id_sanksi` int NOT NULL,
   `nmsanksi` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `keterangan` varchar(100) COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB;
+  `keterangan` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -229,7 +233,7 @@ CREATE TABLE `user` (
   `password` varchar(50) NOT NULL,
   `role` enum('satgas_ppks','pelapor','pimpinan_pt') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `tanggal_dibuat` date NOT NULL
-) ENGINE=InnoDB COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `user`
@@ -355,7 +359,7 @@ ALTER TABLE `detail_basis_aturan_sanksi`
 -- AUTO_INCREMENT for table `detail_konsultasi_jenis_ks`
 --
 ALTER TABLE `detail_konsultasi_jenis_ks`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `detail_konsultasi_sanksi_administratif`
@@ -379,7 +383,7 @@ ALTER TABLE `jenis_kekerasan_seksual`
 -- AUTO_INCREMENT for table `konsultasi_jenis_ks`
 --
 ALTER TABLE `konsultasi_jenis_ks`
-  MODIFY `id_konsul_jenis` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_konsul_jenis` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `konsultasi_sanksi_administratif`
