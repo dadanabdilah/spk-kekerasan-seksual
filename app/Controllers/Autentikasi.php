@@ -23,7 +23,8 @@ class Autentikasi extends BaseController
                 session()->set('role', $data->role);
                 session()->set('loggedIn', true);
 
-                session()->setFlashdata('pesan', 'Anda berhasil login');
+                session()->setFlashdata('status', 'success');
+                session()->setFlashdata('pesan', 'Selamat datang ' . $data->nama_user);
 
                 return redirect()->to('/admin/dashboard');
             } else {

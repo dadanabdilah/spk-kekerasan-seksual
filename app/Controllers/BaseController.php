@@ -70,6 +70,8 @@ abstract class BaseController extends Controller
 
         $this->konsultasiSanksiAdministratif = new \App\Models\KonsultasiSanksiAdministratifModel();
         $this->detailKonsultasiSanksiAdministratif = new \App\Models\DetailKonsultasiSanksiAdministrasiModel();
+
+        $this->laporKonsultasiJenisKs = new \App\Models\LaporKonsultasiJenisKsModel();
         
     }
 }

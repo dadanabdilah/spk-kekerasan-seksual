@@ -72,6 +72,17 @@
               <div class="dropdown-menu">
                 <a class="dropdown-item" href="<?= base_url('admin/hasil-konsultasi-jenis-ks') ?>">Hasil Konsultasi Kekerasan Seksual</a>
                 <a class="dropdown-item" href="<?= base_url('admin/hasil-konsultasi-sanksi') ?>">Hasil Konsultasi Sanksi Administratif</a>
+                <a class="dropdown-item" href="<?= base_url('admin/hasil-laporan') ?>">Hasil Laporan Jenis Kekerasan Seksual</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                Laporan
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="<?= base_url('admin/laporan/konsul-ks') ?>">Laporan Konsultasi Kekerasan Seksual</a>
+                <a class="dropdown-item" href="<?= base_url('admin/laporan/konsul-sanksi') ?>">Laporan Konsultasi Sanksi Administratif</a>
+                <a class="dropdown-item" href="<?= base_url('admin/laporan/pelaporan-konsul-jenisks') ?>">Laporan Pelaporan Konsultasi Jenis Kekerasan Seksual</a>
               </div>
             </li>
            <?php if(session()->get('loggedIn') == true) { ?>

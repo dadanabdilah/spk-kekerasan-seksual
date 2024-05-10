@@ -56,6 +56,8 @@ $routes->get('admin/basis-aturan-jenis-ks/detail/(:num)', 'Admin\BasisAturanJeni
 $routes->post('admin/basis-aturan-jenis-ks/edit/(:num)', 'Admin\BasisAturanJenisKs::edit/$1');
 $routes->get('admin/basis-aturan-jenis-ks/hapus/(:num)', 'Admin\BasisAturanJenisKs::hapus/$1');
 
+$routes->get('admin/lapor-konsul-jenis-ks', 'Admin\LaporKonsultasiJenisKs::index');
+$routes->post('admin/lapor-konsul-jenis-ks', 'Admin\LaporKonsultasiJenisKs::index');
 
 $routes->get('admin/basis-aturan-sanksi', 'Admin\BasisAturanSanksi::index');
 $routes->get('admin/basis-aturan-sanksi/tambah', 'Admin\BasisAturanSanksi::tambah');
@@ -80,6 +82,15 @@ $routes->get('admin/konsultasi-sanksi/hasil/(:num)', 'Admin\KonsultasiSanksi::ha
 $routes->get('admin/hasil-konsultasi-sanksi', 'Admin\HasilKonsultasiSanksi::index');
 $routes->get('admin/hasil-konsultasi-sanksi/detail/(:num)', 'Admin\HasilKonsultasiSanksi::detail/$1');
 $routes->get('admin/hasil-konsultasi-sanksi/hapus/(:num)', 'Admin\HasilKonsultasiSanksi::hapus/$1');
+
+$routes->get('admin/hasil-laporan', 'Admin\HasilLaporKonsultasiJenisKs::index');
+
+$routes->get('admin/laporan/konsul-ks', 'Admin\Laporan::konsulJenisKs');
+$routes->get('admin/laporan/konsul-sanksi', 'Admin\Laporan::konsulSanksi');
+$routes->get('admin/laporan/pelaporan-konsul-jenisks', 'Admin\Laporan::pelaporanKonsulJenisKs');
+
+
+$routes->get('admin/laporan/export/(:any)', 'Admin\Laporan::export/$1');
 
 // $routes->group('admin', ['namespace' => 'App\controllers\Admin'], function ($routes) {
 //     $routes->get('dashboard', 'Dashboard::index');

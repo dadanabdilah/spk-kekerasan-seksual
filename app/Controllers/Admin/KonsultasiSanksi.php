@@ -33,9 +33,15 @@ class KonsultasiSanksi extends BaseController
             return redirect()->to('/admin/konsultasi-sanksi/hasil/' . $id_konsul_sanksi);
         }
 
+        $pelanggaran = [];
+        $no = 1;
+        foreach ($this->pelanggaran->findAll() as $key => $value) {
+            $pelanggaran[$key] = (object) ['id_pelanggaran' => $value->id_pelanggaran, 'nama_pelanggaran' => $value->nama_pelanggaran, 'no' => $no++];
+        }
+
         $data = [
             'title' => 'Konsultasi Sanksi Administratif',
-            'pelanggaran' => $this->pelanggaran->findAll()
+            'pelanggaran' => $pelanggaran
         ];
         return view('admin/konsultasi-sanksi/tambah', $data);
     }

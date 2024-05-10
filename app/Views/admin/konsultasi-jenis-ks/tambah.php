@@ -55,10 +55,12 @@
                             <?php $total_diagnosa = count($diagnosa) ?>
                             <?php $no = 1; ?>
                             <?php foreach ($diagnosa as $key => $value) { ?>
-                                <div class="text-center" id="diagnosa<?= $value->no ?>">
-                                    <p style="font-size: 20px;" class="text-dark"><?= $value->nama_diagnosa ?></p>
-                                    <input type="checkbox" id="check<?= $value->id_diagnosa ?>" name="id_diagnosa[]" value="<?= $value->id_diagnosa ?>" hidden>
-                                    <div class="d-felx">
+                                <div class="text-center p-5" id="diagnosa<?= $value->no ?>" style="min-height : 450px;">
+                                    <div class="mt-3" style="min-height : 100px;">
+                                        <p style="font-size: 50px;" class="text-dark mt-3"><?= $value->nama_diagnosa ?></p>
+                                        <input type="checkbox" id="check<?= $value->id_diagnosa ?>" name="id_diagnosa[]" value="<?= $value->id_diagnosa ?>" hidden>
+                                    </div>
+                                    <div class="d-felx mt-3">
                                         <button type="button" class="btn btn-primary" onclick="setCheckbox('check<?= $value->id_diagnosa ?>', '<?= $total_diagnosa == $no ? 'btnsubmit' : 'diagnosa' . $value->no +1 ?>', 'diagnosa<?= $value->id_diagnosa ?>')">Ya</button>
                                         <button type="button" class="btn btn-danger" onclick="lanjut('<?= $total_diagnosa == $no ? 'btnsubmit' : 'diagnosa' . $value->no + 1 ?>', 'diagnosa<?= $value->id_diagnosa ?>')">Tidak</button>
                                     </div>

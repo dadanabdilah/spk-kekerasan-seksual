@@ -123,7 +123,7 @@ CREATE TABLE `detail_konsultasi_sanksi_administratif` (
 
 CREATE TABLE `diagnosa` (
   `id_diagnosa` int NOT NULL,
-  `nama_diagnosa` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
+  `nama_diagnosa` varchar(200) NOT NULL
 ) ENGINE=InnoDB;
 
 --
@@ -142,9 +142,9 @@ INSERT INTO `diagnosa` (`id_diagnosa`, `nama_diagnosa`) VALUES
 
 CREATE TABLE `jenis_kekerasan_seksual` (
   `id_jenis` int NOT NULL,
-  `nmjenis` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `keterangan` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `solusi` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
+  `nmjenis` varchar(100) NOT NULL,
+  `keterangan` varchar(255) NOT NULL,
+  `solusi` varchar(225) NOT NULL
 ) ENGINE=InnoDB;
 
 --
@@ -163,12 +163,12 @@ INSERT INTO `jenis_kekerasan_seksual` (`id_jenis`, `nmjenis`, `keterangan`, `sol
 CREATE TABLE `konsultasi_jenis_ks` (
   `id_konsul_jenis` int NOT NULL,
   `tgl` date NOT NULL,
-  `nmpelapor` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `nmpelapor` varchar(50) NOT NULL,
   `nama_pelaku` int NOT NULL,
-  `tlp` char(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `alamat` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `kondisi` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `status` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `tlp` char(16) NOT NULL,
+  `alamat` mediumtext NOT NULL,
+  `kondisi` varchar(100) NOT NULL,
+  `status` varchar(10) NOT NULL,
   `id_user` int NOT NULL
 ) ENGINE=InnoDB;
 
@@ -189,11 +189,11 @@ INSERT INTO `konsultasi_jenis_ks` (`id_konsul_jenis`, `tgl`, `nmpelapor`, `nama_
 CREATE TABLE `konsultasi_sanksi_administratif` (
   `id_konsul_sanksi` int NOT NULL,
   `tgl` date NOT NULL,
-  `nmpelapor` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `tlp` char(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `alamat` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `nmpelapor` varchar(50) NOT NULL,
+  `tlp` char(16) NOT NULL,
+  `alamat` mediumtext NOT NULL,
   `kondisi` int NOT NULL,
-  `status` enum('mahasiswa','pendidik','tenaga_pendidik','warga_kampus','masyarakat_umum') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `status` enum('mahasiswa','pendidik','tenaga_pendidik','warga_kampus','masyarakat_umum') NOT NULL,
   `id_user` int NOT NULL
 ) ENGINE=InnoDB;
 
@@ -205,7 +205,7 @@ CREATE TABLE `konsultasi_sanksi_administratif` (
 
 CREATE TABLE `pelanggaran` (
   `id_pelanggaran` int NOT NULL,
-  `nama_pelanggaran` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
+  `nama_pelanggaran` varchar(200) NOT NULL
 ) ENGINE=InnoDB;
 
 -- --------------------------------------------------------
@@ -216,8 +216,8 @@ CREATE TABLE `pelanggaran` (
 
 CREATE TABLE `sanksi_administratif` (
   `id_sanksi` int NOT NULL,
-  `nmsanksi` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `keterangan` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
+  `nmsanksi` varchar(100) NOT NULL,
+  `keterangan` varchar(100) NOT NULL
 ) ENGINE=InnoDB;
 
 -- --------------------------------------------------------
@@ -231,9 +231,9 @@ CREATE TABLE `user` (
   `nama_user` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `role` enum('satgas_ppks','pelapor','pimpinan_pt') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `role` enum('satgas_ppks','pelapor','pimpinan_pt') NOT NULL,
   `tanggal_dibuat` date NOT NULL
-) ENGINE=InnoDB COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB;
 
 --
 -- Dumping data for table `user`
