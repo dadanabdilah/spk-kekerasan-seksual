@@ -64,3 +64,8 @@
     </div>
 </div>
 <?= $this->endSection() ?>
+<?= $this->section('js') ?>
+<script>
+    new DataTable('.table');
+</script>
+<?= $this->endSection() ?>

@@ -61,8 +61,8 @@
                                         <input type="checkbox" id="check<?= $value->id_diagnosa ?>" name="id_diagnosa[]" value="<?= $value->id_diagnosa ?>" hidden>
                                     </div>
                                     <div class="d-felx mt-3">
-                                        <button type="button" class="btn btn-primary" onclick="setCheckbox('check<?= $value->id_diagnosa ?>', '<?= $total_diagnosa == $no ? 'btnsubmit' : 'diagnosa' . $value->no +1 ?>', 'diagnosa<?= $value->id_diagnosa ?>')">Ya</button>
-                                        <button type="button" class="btn btn-danger" onclick="lanjut('<?= $total_diagnosa == $no ? 'btnsubmit' : 'diagnosa' . $value->no + 1 ?>', 'diagnosa<?= $value->id_diagnosa ?>')">Tidak</button>
+                                        <button type="button" class="btn btn-primary" onclick="setCheckbox('check<?= $value->id_diagnosa ?>', '<?= $total_diagnosa == $no ? 'btnsubmit' : 'diagnosa' . $value->no + 1 ?>', 'diagnosa<?= $value->no ?>')">Ya</button>
+                                        <button type="button" class="btn btn-danger" onclick="lanjut('<?= $total_diagnosa == $no ? 'btnsubmit' : 'diagnosa' . $value->no + 1 ?>', 'diagnosa<?= $value->no ?>')">Tidak</button>
                                     </div>
                                 </div> 
                                 <?php $no++; ?>                          

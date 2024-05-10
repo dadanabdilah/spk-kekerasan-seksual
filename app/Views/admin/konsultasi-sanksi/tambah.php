@@ -60,8 +60,8 @@
                                         <input type="checkbox" id="check<?= $value->id_pelanggaran ?>" name="id_pelanggaran[]" value="<?= $value->id_pelanggaran ?>" hidden>
                                     </div>
                                     <div class="d-felx mt-3">
-                                        <button type="button" class="btn btn-primary" onclick="setCheckbox('check<?= $value->id_pelanggaran ?>', '<?= $total_pelanggaran == $no ? 'btnsubmit' : 'pelanggaran' . $value->no +1 ?>', 'pelanggaran<?= $value->id_pelanggaran ?>')">Ya</button>
-                                        <button type="button" class="btn btn-danger" onclick="lanjut('<?= $total_pelanggaran == $no ? 'btnsubmit' : 'pelanggaran' . $value->no + 1 ?>', 'pelanggaran<?= $value->id_pelanggaran ?>')">Tidak</button>
+                                        <button type="button" class="btn btn-primary" onclick="setCheckbox('check<?= $value->id_pelanggaran ?>', '<?= $total_pelanggaran == $no ? 'btnsubmit' : 'pelanggaran' . $value->no +1 ?>', 'pelanggaran<?= $value->no ?>')">Ya</button>
+                                        <button type="button" class="btn btn-danger" onclick="lanjut('<?= $total_pelanggaran == $no ? 'btnsubmit' : 'pelanggaran' . $value->no + 1 ?>', 'pelanggaran<?= $value->no ?>')">Tidak</button>
                                     </div>
                                 </div> 
                                 <?php $no++; ?>                          

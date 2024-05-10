@@ -113,6 +113,10 @@
                             <?php } ?>
                         </table>
                     </div>
+                    <div class="form-group">
+                        <a href="<?= base_url('admin/lapor-konsul-jenis-ks') ?>" class="btn btn-danger">Lapor</a>
+                        <a href="<?= base_url('admin/dashboard') ?>" class="btn btn-warning">Tidak</a>
+                    </div>
                 </form>
             </div>
         </div>
