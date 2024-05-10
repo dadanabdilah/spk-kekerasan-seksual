@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 29, 2024 at 02:47 AM
+-- Generation Time: May 10, 2024 at 06:48 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -30,14 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `basis_aturan_jenis_kekerasan_seksual` (
   `id_aturanjenis` int NOT NULL,
   `id_jenis` int NOT NULL
-) ENGINE=InnoDB;
-
---
--- Dumping data for table `basis_aturan_jenis_kekerasan_seksual`
---
-
-INSERT INTO `basis_aturan_jenis_kekerasan_seksual` (`id_aturanjenis`, `id_jenis`) VALUES
-(1, 1);
+) ENGINE=InnoDB ;
 
 -- --------------------------------------------------------
 
@@ -48,7 +41,7 @@ INSERT INTO `basis_aturan_jenis_kekerasan_seksual` (`id_aturanjenis`, `id_jenis`
 CREATE TABLE `basis_aturan_sanksi` (
   `id_aturansanksi` int NOT NULL,
   `id_sanksi` int NOT NULL
-) ENGINE=InnoDB;
+) ENGINE=InnoDB ;
 
 -- --------------------------------------------------------
 
@@ -60,15 +53,7 @@ CREATE TABLE `detail_basis_aturan_jenis_kekerasan_seksual` (
   `id` int NOT NULL,
   `id_aturanjenis` int NOT NULL,
   `id_diagnosa` int NOT NULL
-) ENGINE=InnoDB;
-
---
--- Dumping data for table `detail_basis_aturan_jenis_kekerasan_seksual`
---
-
-INSERT INTO `detail_basis_aturan_jenis_kekerasan_seksual` (`id`, `id_aturanjenis`, `id_diagnosa`) VALUES
-(2, 1, 1),
-(3, 1, 2);
+) ENGINE=InnoDB ;
 
 -- --------------------------------------------------------
 
@@ -80,7 +65,7 @@ CREATE TABLE `detail_basis_aturan_sanksi` (
   `id` int NOT NULL,
   `id_aturansanksi` int NOT NULL,
   `id_pelanggaran` int NOT NULL
-) ENGINE=InnoDB;
+) ENGINE=InnoDB ;
 
 -- --------------------------------------------------------
 
@@ -92,16 +77,7 @@ CREATE TABLE `detail_konsultasi_jenis_ks` (
   `id` int NOT NULL,
   `id_konsul_jenis` int NOT NULL,
   `id_diagnosa` int NOT NULL
-) ENGINE=InnoDB;
-
---
--- Dumping data for table `detail_konsultasi_jenis_ks`
---
-
-INSERT INTO `detail_konsultasi_jenis_ks` (`id`, `id_konsul_jenis`, `id_diagnosa`) VALUES
-(1, 1, 1),
-(2, 2, 1),
-(3, 2, 2);
+) ENGINE=InnoDB ;
 
 -- --------------------------------------------------------
 
@@ -113,7 +89,7 @@ CREATE TABLE `detail_konsultasi_sanksi_administratif` (
   `id` int NOT NULL,
   `id_konsul_sanksi` int NOT NULL,
   `id_pelanggaran` int NOT NULL
-) ENGINE=InnoDB;
+) ENGINE=InnoDB ;
 
 -- --------------------------------------------------------
 
@@ -123,16 +99,8 @@ CREATE TABLE `detail_konsultasi_sanksi_administratif` (
 
 CREATE TABLE `diagnosa` (
   `id_diagnosa` int NOT NULL,
-  `nama_diagnosa` varchar(200) NOT NULL
-) ENGINE=InnoDB;
-
---
--- Dumping data for table `diagnosa`
---
-
-INSERT INTO `diagnosa` (`id_diagnosa`, `nama_diagnosa`) VALUES
-(1, 'kjl;'),
-(2, 'ghjkl;\'');
+  `nama_diagnosa` varchar(200)  NOT NULL
+) ENGINE=InnoDB ;
 
 -- --------------------------------------------------------
 
@@ -142,17 +110,10 @@ INSERT INTO `diagnosa` (`id_diagnosa`, `nama_diagnosa`) VALUES
 
 CREATE TABLE `jenis_kekerasan_seksual` (
   `id_jenis` int NOT NULL,
-  `nmjenis` varchar(100) NOT NULL,
-  `keterangan` varchar(255) NOT NULL,
-  `solusi` varchar(225) NOT NULL
-) ENGINE=InnoDB;
-
---
--- Dumping data for table `jenis_kekerasan_seksual`
---
-
-INSERT INTO `jenis_kekerasan_seksual` (`id_jenis`, `nmjenis`, `keterangan`, `solusi`) VALUES
-(1, 'Verbal', '-', '');
+  `nmjenis` varchar(100)  NOT NULL,
+  `keterangan` varchar(255)  NOT NULL,
+  `solusi` varchar(225)  NOT NULL
+) ENGINE=InnoDB ;
 
 -- --------------------------------------------------------
 
@@ -163,22 +124,14 @@ INSERT INTO `jenis_kekerasan_seksual` (`id_jenis`, `nmjenis`, `keterangan`, `sol
 CREATE TABLE `konsultasi_jenis_ks` (
   `id_konsul_jenis` int NOT NULL,
   `tgl` date NOT NULL,
-  `nmpelapor` varchar(50) NOT NULL,
-  `nama_pelaku` int NOT NULL,
-  `tlp` char(16) NOT NULL,
-  `alamat` mediumtext NOT NULL,
-  `kondisi` varchar(100) NOT NULL,
-  `status` varchar(10) NOT NULL,
+  `nmpelapor` varchar(50)  NOT NULL,
+  `nama_pelaku` varchar(100) NOT NULL,
+  `tlp` char(16)  NOT NULL,
+  `alamat` mediumtext  NOT NULL,
+  `kondisi` varchar(100)  NOT NULL,
+  `status` varchar(10)  NOT NULL,
   `id_user` int NOT NULL
-) ENGINE=InnoDB;
-
---
--- Dumping data for table `konsultasi_jenis_ks`
---
-
-INSERT INTO `konsultasi_jenis_ks` (`id_konsul_jenis`, `tgl`, `nmpelapor`, `nama_pelaku`, `tlp`, `alamat`, `kondisi`, `status`, `id_user`) VALUES
-(1, '2024-04-19', 'Testing', 0, '09876546789', 'Kuningan', 'disabilitas', '', 2),
-(2, '2024-04-29', 'Dadan Abdilah', 0, '89765567890', 'Kuningan', 'disabilitas', '', 2);
+) ENGINE=InnoDB ;
 
 -- --------------------------------------------------------
 
@@ -189,13 +142,37 @@ INSERT INTO `konsultasi_jenis_ks` (`id_konsul_jenis`, `tgl`, `nmpelapor`, `nama_
 CREATE TABLE `konsultasi_sanksi_administratif` (
   `id_konsul_sanksi` int NOT NULL,
   `tgl` date NOT NULL,
-  `nmpelapor` varchar(50) NOT NULL,
-  `tlp` char(16) NOT NULL,
-  `alamat` mediumtext NOT NULL,
+  `nmpelapor` varchar(50)  NOT NULL,
+  `tlp` char(16)  NOT NULL,
+  `alamat` mediumtext  NOT NULL,
   `kondisi` int NOT NULL,
-  `status` enum('mahasiswa','pendidik','tenaga_pendidik','warga_kampus','masyarakat_umum') NOT NULL,
+  `status` enum('mahasiswa','pendidik','tenaga_pendidik','warga_kampus','masyarakat_umum')  NOT NULL,
   `id_user` int NOT NULL
-) ENGINE=InnoDB;
+) ENGINE=InnoDB ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lapor_konsultasi_jenis_ks`
+--
+
+CREATE TABLE `lapor_konsultasi_jenis_ks` (
+  `id_lapor_konsul` int NOT NULL,
+  `nama_pelapor` varchar(50)  NOT NULL,
+  `nama_pelaku` varchar(100) NOT NULL,
+  `tlp` char(16)  NOT NULL,
+  `email` varchar(100)  NOT NULL,
+  `alamat` mediumtext  NOT NULL,
+  `jenis_ks` mediumtext NOT NULL,
+  `cerita_peristiswa` mediumtext  NOT NULL,
+  `disabilitas` enum('ya','tidak')  NOT NULL,
+  `status` varchar(100)  NOT NULL,
+  `alasan_pengaduan` mediumtext  NOT NULL,
+  `no_hp_lain` varchar(20)  NOT NULL,
+  `email_lain` varchar(100)  NOT NULL,
+  `tgl` date NOT NULL,
+  `id_user` int NOT NULL
+) ENGINE=InnoDB ;
 
 -- --------------------------------------------------------
 
@@ -205,8 +182,8 @@ CREATE TABLE `konsultasi_sanksi_administratif` (
 
 CREATE TABLE `pelanggaran` (
   `id_pelanggaran` int NOT NULL,
-  `nama_pelanggaran` varchar(200) NOT NULL
-) ENGINE=InnoDB;
+  `nama_pelanggaran` varchar(200)  NOT NULL
+) ENGINE=InnoDB ;
 
 -- --------------------------------------------------------
 
@@ -216,9 +193,9 @@ CREATE TABLE `pelanggaran` (
 
 CREATE TABLE `sanksi_administratif` (
   `id_sanksi` int NOT NULL,
-  `nmsanksi` varchar(100) NOT NULL,
-  `keterangan` varchar(100) NOT NULL
-) ENGINE=InnoDB;
+  `nmsanksi` varchar(100)  NOT NULL,
+  `keterangan` varchar(100)  NOT NULL
+) ENGINE=InnoDB ;
 
 -- --------------------------------------------------------
 
@@ -233,7 +210,7 @@ CREATE TABLE `user` (
   `password` varchar(50) NOT NULL,
   `role` enum('satgas_ppks','pelapor','pimpinan_pt') NOT NULL,
   `tanggal_dibuat` date NOT NULL
-) ENGINE=InnoDB;
+) ENGINE=InnoDB ;
 
 --
 -- Dumping data for table `user`
@@ -310,6 +287,12 @@ ALTER TABLE `konsultasi_sanksi_administratif`
   ADD PRIMARY KEY (`id_konsul_sanksi`) USING BTREE;
 
 --
+-- Indexes for table `lapor_konsultasi_jenis_ks`
+--
+ALTER TABLE `lapor_konsultasi_jenis_ks`
+  ADD PRIMARY KEY (`id_lapor_konsul`) USING BTREE;
+
+--
 -- Indexes for table `pelanggaran`
 --
 ALTER TABLE `pelanggaran`
@@ -335,7 +318,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `basis_aturan_jenis_kekerasan_seksual`
 --
 ALTER TABLE `basis_aturan_jenis_kekerasan_seksual`
-  MODIFY `id_aturanjenis` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_aturanjenis` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `basis_aturan_sanksi`
@@ -347,7 +330,7 @@ ALTER TABLE `basis_aturan_sanksi`
 -- AUTO_INCREMENT for table `detail_basis_aturan_jenis_kekerasan_seksual`
 --
 ALTER TABLE `detail_basis_aturan_jenis_kekerasan_seksual`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `detail_basis_aturan_sanksi`
@@ -359,7 +342,7 @@ ALTER TABLE `detail_basis_aturan_sanksi`
 -- AUTO_INCREMENT for table `detail_konsultasi_jenis_ks`
 --
 ALTER TABLE `detail_konsultasi_jenis_ks`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `detail_konsultasi_sanksi_administratif`
@@ -371,25 +354,31 @@ ALTER TABLE `detail_konsultasi_sanksi_administratif`
 -- AUTO_INCREMENT for table `diagnosa`
 --
 ALTER TABLE `diagnosa`
-  MODIFY `id_diagnosa` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_diagnosa` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `jenis_kekerasan_seksual`
 --
 ALTER TABLE `jenis_kekerasan_seksual`
-  MODIFY `id_jenis` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_jenis` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `konsultasi_jenis_ks`
 --
 ALTER TABLE `konsultasi_jenis_ks`
-  MODIFY `id_konsul_jenis` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_konsul_jenis` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `konsultasi_sanksi_administratif`
 --
 ALTER TABLE `konsultasi_sanksi_administratif`
   MODIFY `id_konsul_sanksi` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `lapor_konsultasi_jenis_ks`
+--
+ALTER TABLE `lapor_konsultasi_jenis_ks`
+  MODIFY `id_lapor_konsul` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `pelanggaran`
