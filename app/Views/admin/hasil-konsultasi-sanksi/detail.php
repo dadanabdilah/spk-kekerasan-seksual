@@ -52,7 +52,9 @@
                                 <td>Sanksi Administratif</td>
                                 <td>Keterangan</td>
                             </tr>
+                            <?php if($detailKonsultasi){ ?>
                             <?php
+                                $jenis = [];
                                 foreach ($detailKonsultasi as $key => $value) {
                                     $jenis[] = $value->nmsanksi . '|' . $value->keterangan;     
                                 }
@@ -106,6 +108,11 @@
                                     <td>
                                         <?= $value['persen'] ?>%
                                     </td>
+                                </tr>
+                            <?php } ?>
+                            <?php } else {?>
+                                <tr>
+                                    <td colspan="3">Tidak ada data</td>
                                 </tr>
                             <?php } ?>
                         </table>

@@ -17,7 +17,7 @@
             <div class="card-header">
             </div>
             <div class="card-body">
-                <form method="POST" action="<?= base_url('admin/lapor-konsul-jenis-ks') ?>">
+                <form method="POST" action="<?= base_url('admin/lapor-konsul-jenis-ks') ?>" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -78,6 +78,11 @@
                             <div class="form-group">
                                 <label for="nama">Email Lain Yang Bisa Dikonfirmasi</label>
                                 <input class="form-control" type="text" name="email_lain" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="nama">Bukti</label>
+                                <input class="form-control" type="file" name="bukti" required/>
+                                <small class="text-danger">Hanya bisa format .jpg, jpeg, .png dan .mp4</small>
                             </div>
                         </div>
                     </div>

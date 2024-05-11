@@ -21,11 +21,13 @@ class KonsultasiSanksi extends BaseController
 
             $id_konsul_sanksi = $this->konsultasiSanksiAdministratif->getInsertId();
 
-            foreach ($this->request->getPost('id_pelanggaran') as $key => $value) {
-                $this->detailKonsultasiSanksiAdministratif->save([
-                    'id_konsul_sanksi' => $id_konsul_sanksi,
-                    'id_pelanggaran'  => $value
-                ]);
+            if($this->request->getPost('id_pelanggaran')){
+                foreach ($this->request->getPost('id_pelanggaran') as $key => $value) {
+                    $this->detailKonsultasiSanksiAdministratif->save([
+                        'id_konsul_sanksi' => $id_konsul_sanksi,
+                        'id_pelanggaran'  => $value
+                    ]);
+                }
             }
 
             session()->setFlashdata('status', 'success');

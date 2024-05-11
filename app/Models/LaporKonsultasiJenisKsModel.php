@@ -12,7 +12,7 @@ class LaporKonsultasiJenisKsModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_lapor_konsul', 'nama_pelapor', 'nama_pelaku', 'tlp','email', 'alamat', 'jenis_ks', 'cerita_peristiswa', 'disabilitas', 'status', 'alasan_pengaduan', 'no_hp_lain', 'email_lain', 'tgl', 'id_user'];
+    protected $allowedFields    = ['id_lapor_konsul', 'nama_pelapor', 'nama_pelaku', 'tlp','email', 'alamat', 'jenis_ks', 'cerita_peristiswa', 'disabilitas', 'status', 'alasan_pengaduan', 'no_hp_lain', 'email_lain', 'tgl', 'bukti', 'id_user'];
 
     protected bool $allowEmptyInserts = false;
 

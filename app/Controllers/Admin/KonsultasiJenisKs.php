@@ -22,11 +22,13 @@ class KonsultasiJenisKs extends BaseController
 
             $id_konsul_jenis = $this->konsultasiJenisKs->getInsertId();
 
-            foreach ($this->request->getPost('id_diagnosa') as $key => $value) {
-                $this->detailKonsultasiJenisKs->save([
-                    'id_konsul_jenis' => $id_konsul_jenis,
-                    'id_diagnosa'  => $value
-                ]);
+            if($this->request->getPost('id_diagnosa')){
+                foreach ($this->request->getPost('id_diagnosa') as $key => $value) {
+                    $this->detailKonsultasiJenisKs->save([
+                        'id_konsul_jenis' => $id_konsul_jenis,
+                        'id_diagnosa'  => $value
+                    ]);
+                }
             }
 
             session()->setFlashdata('status', 'success');

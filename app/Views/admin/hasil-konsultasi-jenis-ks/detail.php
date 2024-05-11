@@ -46,6 +46,9 @@
                             <?php foreach ($detailKonsultasi as $key => $value) { ?>
                                 <li><?= $value->nama_diagnosa ?></li>
                             <?php } ?>
+                            <?php if(! $detailKonsultasi) { ?>
+                                <li>Tidak ada data</li>
+                            <?php } ?>
                         </ul>
                     </div>
 
@@ -57,6 +60,7 @@
                                 <td>Keterangan</td>
                                 <td>Persentase</td>
                             </tr>
+                            <?php if($detailKonsultasi){ ?>
                             <?php
                                 foreach ($detailKonsultasi as $key => $value) {
                                     $jenis[] = $value->nmjenis . '|' . $value->keterangan;     
@@ -111,6 +115,11 @@
                                     <td>
                                         <?= $value['persen'] ?>%
                                     </td>
+                                </tr>
+                            <?php } ?>
+                            <?php } else {?>
+                                <tr>
+                                    <td colspan="3">Tidak ada data</td>
                                 </tr>
                             <?php } ?>
                         </table>

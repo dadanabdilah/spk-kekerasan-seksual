@@ -34,6 +34,7 @@
                                 <th>No HP Alternatif</th>
                                 <th>Email Alternatif</th>
                                 <th>Tanggal</th>
+                                <th>Bukti</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -53,6 +54,7 @@
                                     <td><?= $data->no_hp_lain ?></td>
                                     <td><?= $data->email_lain ?></td>
                                     <td><?= $data->tgl ?></td>
+                                    <td><a target="_blank" href="<?= base_url('assets/bukti/') . $data->bukti ?>" class="btn btn-primary">Lihat</td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
