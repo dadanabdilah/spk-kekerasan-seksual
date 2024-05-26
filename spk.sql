@@ -211,7 +211,7 @@ CREATE TABLE `user` (
   `password` varchar(50) NOT NULL,
   `role` enum('satgas_ppks','pelapor','pimpinan_pt'),
   `tanggal_dibuat` date NOT NULL
-) ENGINE=InnoDB  COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB;
 
 --
 -- Dumping data for table `user`
